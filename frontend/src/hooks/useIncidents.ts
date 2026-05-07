@@ -10,34 +10,34 @@ import type {
   AddProsecutionStepBody,
 } from '../api/incidents'
 
-interface IncidentQueryOptions {
+interface QueryOptions {
   enabled?: boolean
   refetchInterval?: number | false
 }
 
-export function useIncidents(params?: IncidentParams, options?: IncidentQueryOptions) {
+export function useIncidents(params?: IncidentParams, options?: QueryOptions) {
   return useQuery({
     queryKey: ['incidents', params],
-    queryFn:  () => getIncidents(params),
+    queryFn: () => getIncidents(params),
     enabled: options?.enabled ?? true,
     refetchInterval: options?.refetchInterval ?? 15_000,
   })
 }
 
-export function useIncident(id: string | undefined, params?: { as_of?: string | null }, options?: IncidentQueryOptions) {
+export function useIncident(id: string | undefined, params?: { as_of?: string | null }, options?: QueryOptions) {
   return useQuery({
     queryKey: ['incidents', id, params],
-    queryFn:  () => getIncident(id!, params),
-    enabled:  Boolean(id) && (options?.enabled ?? true),
+    queryFn: () => getIncident(id!, params),
+    enabled: Boolean(id) && (options?.enabled ?? true),
     refetchInterval: options?.refetchInterval ?? 15_000,
   })
 }
 
-export function useIncidentAllowedTransitions(id: string | undefined, options?: IncidentQueryOptions) {
+export function useIncidentAllowedTransitions(id: string | undefined, options?: QueryOptions) {
   return useQuery({
     queryKey: ['incident-transitions', id],
-    queryFn:  () => getIncidentAllowedTransitions(id!),
-    enabled:  Boolean(id) && (options?.enabled ?? true),
+    queryFn: () => getIncidentAllowedTransitions(id!),
+    enabled: Boolean(id) && (options?.enabled ?? true),
     refetchInterval: options?.refetchInterval ?? 15_000,
   })
 }
@@ -85,11 +85,11 @@ export function useAssignIncident(callbacks?: MutationCallbacks<{ id: string; as
   })
 }
 
-export function useIncidentNotes(id: string | undefined, params?: { as_of?: string | null }, options?: IncidentQueryOptions) {
+export function useIncidentNotes(id: string | undefined, params?: { as_of?: string | null }, options?: QueryOptions) {
   return useQuery({
     queryKey: ['incident-notes', id, params],
-    queryFn:  () => getIncidentNotes(id!, params),
-    enabled:  Boolean(id) && (options?.enabled ?? true),
+    queryFn: () => getIncidentNotes(id!, params),
+    enabled: Boolean(id) && (options?.enabled ?? true),
     refetchInterval: options?.refetchInterval ?? 30_000,
   })
 }

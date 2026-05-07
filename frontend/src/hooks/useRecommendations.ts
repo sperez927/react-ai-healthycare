@@ -11,24 +11,24 @@ import {
 } from '../api/recommendations'
 import type { RecommendationParams } from '../api/recommendations'
 
-interface RecommendationQueryOptions {
+interface QueryOptions {
   enabled?: boolean
   refetchInterval?: number | false
 }
 
-export function useRecommendations(params?: RecommendationParams, options?: RecommendationQueryOptions) {
+export function useRecommendations(params?: RecommendationParams, options?: QueryOptions) {
   return useQuery({
     queryKey: ['recommendations', params],
-    queryFn:  () => getRecommendations(params),
+    queryFn: () => getRecommendations(params),
     enabled: options?.enabled ?? true,
     refetchInterval: options?.refetchInterval ?? 60_000,
   })
 }
 
-export function useRecommendationMetrics(options?: RecommendationQueryOptions) {
+export function useRecommendationMetrics(options?: QueryOptions) {
   return useQuery({
     queryKey: ['recommendations-metrics'],
-    queryFn:  getRecommendationMetrics,
+    queryFn: getRecommendationMetrics,
     enabled: options?.enabled ?? true,
     refetchInterval: options?.refetchInterval ?? 120_000,
   })

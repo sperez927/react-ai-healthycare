@@ -5,18 +5,22 @@ import { fetchAllPaginated } from './fetchAllPaginated'
 
 type Params = PaginationParams & AsOfParam
 
-export function useSites(params?: Params, enabled = true) {
+interface QueryOptions {
+  enabled?: boolean
+}
+
+export function useSites(params?: Params, options?: QueryOptions) {
   return useQuery({
     queryKey: ['sites', params],
     queryFn: () => getSites(params),
-    enabled,
+    enabled: options?.enabled ?? true,
   })
 }
 
-export function useAllSites(params?: Omit<Params, 'page' | 'per_page'>, enabled = true) {
+export function useAllSites(params?: Omit<Params, 'page' | 'per_page'>, options?: QueryOptions) {
   return useQuery({
     queryKey: ['sites', 'all', params],
     queryFn: ({ signal }) => fetchAllPaginated(getSites, params, { signal }),
-    enabled,
+    enabled: options?.enabled ?? true,
   })
 }

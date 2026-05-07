@@ -10,19 +10,23 @@ type Params = PaginationParams & AsOfParam & {
   asset_type?: string
 }
 
-export function useAssets(params?: Params, enabled = true) {
+interface QueryOptions {
+  enabled?: boolean
+}
+
+export function useAssets(params?: Params, options?: QueryOptions) {
   return useQuery({
     queryKey: ['assets', params],
     queryFn: () => getAssets(params),
-    enabled,
+    enabled: options?.enabled ?? true,
   })
 }
 
-export function useAllAssets(params?: Omit<Params, 'page' | 'per_page'>, enabled = true) {
+export function useAllAssets(params?: Omit<Params, 'page' | 'per_page'>, options?: QueryOptions) {
   return useQuery({
     queryKey: ['assets', 'all', params],
     queryFn: ({ signal }) => fetchAllPaginated(getAssets, params, { signal }),
-    enabled,
+    enabled: options?.enabled ?? true,
   })
 }
 

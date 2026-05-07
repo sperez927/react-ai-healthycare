@@ -4,6 +4,7 @@ import type { AsOfParam, SwimlaneParams } from '../api/types'
 
 interface QueryOptions {
   enabled?: boolean
+  refetchInterval?: number | false
 }
 
 export function useReadiness(params?: AsOfParam, options?: QueryOptions) {
@@ -27,6 +28,6 @@ export function useSwimlane(params?: SwimlaneParams, options?: QueryOptions) {
     queryKey: ['analytics', 'swimlane', params],
     queryFn: () => getSwimlane(params),
     enabled: options?.enabled ?? true,
-    refetchInterval: 60_000,
+    refetchInterval: options?.refetchInterval ?? 60_000,
   })
 }

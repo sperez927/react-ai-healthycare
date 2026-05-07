@@ -11,6 +11,17 @@ type Params = PaginationParams &
     priority?: string | null
   }
 
+interface QueryOptions {
+  enabled?: boolean
+}
+
+function cleanParams<T extends Record<string, unknown>>(params: T | undefined): T | undefined {
+  if (!params) return undefined
+  return Object.fromEntries(
+    Object.entries(params).filter(([, value]) => value != null)
+  ) as T
+}
+
 export function useTask(id: string | undefined, params?: AsOfParam) {
   return useQuery({
     queryKey: ['tasks', id, params],
@@ -19,28 +30,19 @@ export function useTask(id: string | undefined, params?: AsOfParam) {
   })
 }
 
-export function useTasks(params?: Params, enabled = true) {
-  // Strip null values before passing to API
-  const cleaned = params
-    ? Object.fromEntries(Object.entries(params).filter(([, v]) => v != null))
-    : undefined
-
+export function useTasks(params?: Params, options?: QueryOptions) {
   return useQuery({
     queryKey: ['tasks', params],
-    queryFn: () => getTasks(cleaned),
-    enabled,
+    queryFn: () => getTasks(cleanParams(params)),
+    enabled: options?.enabled ?? true,
   })
 }
 
-export function useAllTasks(params?: Omit<Params, 'page' | 'per_page'>, enabled = true) {
-  const cleaned = params
-    ? Object.fromEntries(Object.entries(params).filter(([, value]) => value != null))
-    : undefined
-
+export function useAllTasks(params?: Omit<Params, 'page' | 'per_page'>, options?: QueryOptions) {
   return useQuery({
     queryKey: ['tasks', 'all', params],
-    queryFn: ({ signal }) => fetchAllPaginated(getTasks, cleaned, { signal }),
-    enabled,
+    queryFn: ({ signal }) => fetchAllPaginated(getTasks, cleanParams(params), { signal }),
+    enabled: options?.enabled ?? true,
   })
 }
 

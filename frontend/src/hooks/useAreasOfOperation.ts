@@ -17,28 +17,33 @@ import type {
 } from '../api/types'
 import { fetchAllPaginated } from './fetchAllPaginated'
 
+interface QueryOptions {
+  enabled?: boolean
+  staleTime?: number
+}
+
 export function useAreaOfOperation(id: string | undefined, params?: AsOfParam) {
   return useQuery({
     queryKey: ['areas_of_operation', id, params],
-    queryFn:  () => getAreaOfOperation(id!, params),
-    enabled:  Boolean(id),
+    queryFn: () => getAreaOfOperation(id!, params),
+    enabled: Boolean(id),
   })
 }
 
-export function useAreasOfOperation(params?: AreasOfOperationParams, options?: { enabled?: boolean; staleTime?: number }) {
+export function useAreasOfOperation(params?: AreasOfOperationParams, options?: QueryOptions) {
   return useQuery({
-    queryKey:  ['areas_of_operation', params],
-    queryFn:   () => getAreasOfOperation(params),
-    enabled:   options?.enabled ?? true,
+    queryKey: ['areas_of_operation', params],
+    queryFn: () => getAreasOfOperation(params),
+    enabled: options?.enabled ?? true,
     staleTime: options?.staleTime,
   })
 }
 
-export function useAllAreasOfOperation(params?: Omit<AreasOfOperationParams, 'page' | 'per_page'>, enabled = true) {
+export function useAllAreasOfOperation(params?: Omit<AreasOfOperationParams, 'page' | 'per_page'>, options?: QueryOptions) {
   return useQuery({
     queryKey: ['areas_of_operation', 'all', params],
     queryFn: ({ signal }) => fetchAllPaginated(getAreasOfOperation, params, { signal }),
-    enabled,
+    enabled: options?.enabled ?? true,
   })
 }
 

@@ -2,27 +2,32 @@ import { useQuery } from '@tanstack/react-query'
 import { getVessels, getVessel, getVesselTracks } from '../api/vessels'
 import type { VesselsParams } from '../api/vessels'
 
-export function useVessels(params?: VesselsParams, options?: { enabled?: boolean; refetchInterval?: number | false }) {
+interface QueryOptions {
+  enabled?: boolean
+  refetchInterval?: number | false
+}
+
+export function useVessels(params?: VesselsParams, options?: QueryOptions) {
   return useQuery({
     queryKey: ['vessels', params],
-    queryFn:  () => getVessels(params),
+    queryFn: () => getVessels(params),
     refetchInterval: options?.refetchInterval ?? 30_000,
-    enabled:  options?.enabled ?? true,
+    enabled: options?.enabled ?? true,
   })
 }
 
 export function useVessel(id: string | null) {
   return useQuery({
     queryKey: ['vessels', id],
-    queryFn:  () => getVessel(id!),
-    enabled:  !!id,
+    queryFn: () => getVessel(id!),
+    enabled: !!id,
   })
 }
 
 export function useVesselTracks(id: string | null, params?: { from?: string; to?: string; limit?: number }) {
   return useQuery({
     queryKey: ['vessel-tracks', id, params],
-    queryFn:  () => getVesselTracks(id!, params),
-    enabled:  !!id,
+    queryFn: () => getVesselTracks(id!, params),
+    enabled: !!id,
   })
 }

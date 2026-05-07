@@ -4,19 +4,24 @@ import { getTelemetry } from '../api/telemetry'
 import { type TelemetryMap, type TelemetryReading } from '../lib/telemetry'
 import { useTelemetryStream } from './useTelemetryStream'
 
+interface QueryOptions {
+  enabled?: boolean
+}
+
 function toTelemetryMap(rows: TelemetryReading[]): TelemetryMap {
   const map: TelemetryMap = new Map()
   for (const row of rows) map.set(row.asset_id, row)
   return map
 }
 
-export function useTelemetry(enabled = true, asOf?: string | null) {
+export function useTelemetry(options?: QueryOptions, asOf?: string | null) {
+  const enabled = options?.enabled ?? true
   const live = useTelemetryStream(enabled && !asOf)
 
   const replayQuery = useQuery({
     queryKey: ['telemetry', { as_of: asOf ?? null }],
-    queryFn:  () => getTelemetry({ as_of: asOf! }),
-    enabled:  enabled && Boolean(asOf),
+    queryFn: () => getTelemetry({ as_of: asOf! }),
+    enabled: enabled && Boolean(asOf),
     staleTime: Infinity,
   })
 

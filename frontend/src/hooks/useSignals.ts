@@ -5,16 +5,12 @@ import type { Signal, SignalType, SignalsParams } from '../api/types'
 import { LIVE_SIGNAL_LIMITS, LIVE_SIGNAL_TYPES, mergeSignals, sortSignalsNewestFirst, type SignalMap } from '../lib/liveSignals'
 import { useSignalStream } from './useSignalStream'
 
-interface UseSignalsOptions {
-  refetchInterval?: number | false
-}
-
-interface UseSignalsInfiniteOptions {
+interface QueryOptions {
   enabled?: boolean
   refetchInterval?: number | false
 }
 
-export function useSignals(params?: SignalsParams, options?: UseSignalsOptions) {
+export function useSignals(params?: SignalsParams, options?: QueryOptions) {
   return useQuery({
     queryKey: ['signals', params],
     queryFn: () => getSignals(params),

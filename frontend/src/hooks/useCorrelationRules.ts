@@ -11,6 +11,7 @@ import type { AsOfParam, CreateCorrelationRuleBody, UpdateCorrelationRuleBody } 
 
 interface QueryOptions {
   enabled?: boolean
+  staleTime?: number
 }
 
 type CorrelationRulesParams = AsOfParam & { active_only?: boolean }
@@ -20,6 +21,7 @@ export function useCorrelationRules(params?: CorrelationRulesParams, options?: Q
     queryKey: ['correlation_rules', params],
     queryFn: () => getCorrelationRules(params),
     enabled: options?.enabled ?? true,
+    staleTime: options?.staleTime,
   })
 }
 
@@ -59,8 +61,8 @@ export function useDeleteCorrelationRule() {
 export function useRuleEffectiveness(options?: QueryOptions) {
   return useQuery({
     queryKey: ['correlation_rules', 'effectiveness'],
-    queryFn:  getRuleEffectiveness,
+    queryFn: getRuleEffectiveness,
     enabled: options?.enabled ?? true,
-    staleTime: 5 * 60 * 1000,
+    staleTime: options?.staleTime ?? 5 * 60 * 1000,
   })
 }

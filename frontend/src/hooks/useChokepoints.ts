@@ -13,7 +13,11 @@ import type {
 } from '../api/types'
 import { fetchAllPaginated } from './fetchAllPaginated'
 
-export function useChokepoints(params?: ChokepointsParams, options?: { enabled?: boolean }) {
+interface QueryOptions {
+  enabled?: boolean
+}
+
+export function useChokepoints(params?: ChokepointsParams, options?: QueryOptions) {
   return useQuery({
     queryKey: ['chokepoints', params],
     queryFn: () => getChokepoints(params),
@@ -21,14 +25,11 @@ export function useChokepoints(params?: ChokepointsParams, options?: { enabled?:
   })
 }
 
-export function useAllChokepoints(
-  params?: Omit<ChokepointsParams, 'page' | 'per_page'>,
-  enabled = true,
-) {
+export function useAllChokepoints(params?: Omit<ChokepointsParams, 'page' | 'per_page'>, options?: QueryOptions) {
   return useQuery({
     queryKey: ['chokepoints', 'all', params],
     queryFn: ({ signal }) => fetchAllPaginated(getChokepoints, params, { signal }),
-    enabled,
+    enabled: options?.enabled ?? true,
   })
 }
 
