@@ -107,11 +107,11 @@ export interface IncidentParams extends PaginationParams {
 // ── API functions ─────────────────────────────────────────────────────────
 
 export function getIncidents(params?: IncidentParams): Promise<PaginatedResponse<Incident>> {
-  return api.get('/api/incidents', params as QueryParams)
+  return api.get('/api/incidents', params)
 }
 
 export function getIncident(id: string, params?: { as_of?: string | null }): Promise<Incident> {
-  return api.get(`/api/incidents/${id}`, params as QueryParams)
+  return api.get(`/api/incidents/${id}`, params)
 }
 
 export function updateIncident(id: string, body: Partial<Pick<Incident, 'title' | 'description' | 'severity'>>): Promise<Incident> {
@@ -131,7 +131,7 @@ export function assignIncident(id: string, assignee_id: string | null): Promise<
 }
 
 export function getIncidentNotes(id: string, params?: { as_of?: string | null }): Promise<IncidentNote[]> {
-  return api.get(`/api/incidents/${id}/notes`, params as QueryParams)
+  return api.get(`/api/incidents/${id}/notes`, params)
 }
 
 export function addIncidentNote(id: string, body: string): Promise<IncidentNote> {

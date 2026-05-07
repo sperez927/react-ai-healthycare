@@ -1,5 +1,4 @@
 import { api } from './client'
-import type { QueryParams } from './client'
 import type { AsOfParam } from './types'
 import type { TelemetryReading, AssetTrail } from '../lib/telemetry'
 
@@ -12,7 +11,7 @@ export interface TelemetrySnapshotResponse {
 }
 
 export function getTelemetry(params?: AsOfParam): Promise<TelemetrySnapshotResponse> {
-  return api.get('/api/telemetry', params as QueryParams)
+  return api.get('/api/telemetry', params)
 }
 
 // ---------------------------------------------------------------------------
@@ -35,5 +34,5 @@ export interface AssetTrailsResponse {
 }
 
 export function getAssetTrails(params?: AssetTrailsParams): Promise<AssetTrailsResponse> {
-  return api.get('/api/telemetry/trails', params as QueryParams)
+  return api.get('/api/telemetry/trails', params)
 }

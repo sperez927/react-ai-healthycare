@@ -1,5 +1,4 @@
 import { api } from './client'
-import type { QueryParams } from './client'
 import type {
   AreaOfOperation,
   Posture,
@@ -14,11 +13,11 @@ export function getAreasOfOperation(
   params?: AreasOfOperationParams,
   options?: { signal?: AbortSignal },
 ): Promise<PaginatedResponse<AreaOfOperation>> {
-  return api.get('/api/areas_of_operation', params as QueryParams, options)
+  return api.get('/api/areas_of_operation', params, options)
 }
 
 export function getAreaOfOperation(id: string, params?: AsOfParam): Promise<AreaOfOperation> {
-  return api.get(`/api/areas_of_operation/${id}`, params as QueryParams)
+  return api.get(`/api/areas_of_operation/${id}`, params)
 }
 
 export function createAreaOfOperation(

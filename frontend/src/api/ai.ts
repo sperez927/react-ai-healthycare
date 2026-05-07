@@ -1,5 +1,4 @@
 import { api, postBlob } from './client'
-import type { QueryParams } from './client'
 import type {
   AiFilterResult,
   AiOntologyQueryRequest,
@@ -10,7 +9,7 @@ import type {
 } from './types'
 
 export function getAiFilter(q: string, entityType: 'tasks' | 'signals' = 'tasks'): Promise<{ data: AiFilterResult }> {
-  return api.get('/api/ai/filter', { q, entity_type: entityType } as QueryParams)
+  return api.get('/api/ai/filter', { q, entity_type: entityType })
 }
 
 export function postAiSummary(body: AiSummaryRequest): Promise<{ data: AiSummaryResult }> {
@@ -32,4 +31,4 @@ export interface AiExportRequest {
 // Returns a Blob (application/pdf) for client-side download.
 export function exportBriefing(body: AiExportRequest): Promise<Blob> {
   return postBlob('/api/ai/export', body)
-}
+}}

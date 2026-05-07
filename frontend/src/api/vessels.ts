@@ -37,14 +37,14 @@ export interface VesselsParams extends QueryParams {
   page?: number
 }
 
-export function getVessels(params?: VesselsParams) {
-  return api.get('/api/vessels', params as QueryParams) as Promise<{ data: Vessel[]; meta: Record<string, number> }>
+export function getVessels(params?: VesselsParams): Promise<{ data: Vessel[]; meta: Record<string, number> }> {
+  return api.get('/api/vessels', params)
 }
 
-export function getVessel(id: string) {
-  return api.get(`/api/vessels/${id}`) as Promise<Vessel>
+export function getVessel(id: string): Promise<Vessel> {
+  return api.get(`/api/vessels/${id}`)
 }
 
-export function getVesselTracks(id: string, params?: { from?: string; to?: string; limit?: number }) {
-  return api.get(`/api/vessels/${id}/tracks`, params as QueryParams) as Promise<{ data: VesselTrack[] }>
+export function getVesselTracks(id: string, params?: { from?: string; to?: string; limit?: number }): Promise<{ data: VesselTrack[] }> {
+  return api.get(`/api/vessels/${id}/tracks`, params)
 }

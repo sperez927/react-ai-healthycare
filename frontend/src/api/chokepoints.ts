@@ -1,5 +1,4 @@
 import { api } from './client'
-import type { QueryParams } from './client'
 import type {
   Chokepoint,
   ChokepointsParams,
@@ -12,7 +11,7 @@ export function getChokepoints(
   params?: ChokepointsParams,
   options?: { signal?: AbortSignal },
 ): Promise<PaginatedResponse<Chokepoint>> {
-  return api.get('/api/chokepoints', params as QueryParams | undefined, options)
+  return api.get('/api/chokepoints', params, options)
 }
 
 export function createChokepoint(body: CreateChokepointBody): Promise<Chokepoint> {

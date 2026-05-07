@@ -1,5 +1,4 @@
 import { api } from './client'
-import type { QueryParams } from './client'
 import type {
   AsOfParam,
   SignalRuleMatch,
@@ -10,7 +9,7 @@ import type {
 } from './types'
 
 export function getSignalRuleMatches(params?: SignalRuleMatchesParams): Promise<PaginatedResponse<SignalRuleMatch>> {
-  return api.get('/api/signal_rule_matches', params as QueryParams)
+  return api.get('/api/signal_rule_matches', params)
 }
 
 export function getSignalRuleMatch(id: string): Promise<SignalRuleMatch> {
@@ -41,7 +40,7 @@ export function bulkTransitionAlerts(body: BulkTransitionBody): Promise<BulkTran
 }
 
 export function getActiveBreachSiteIds(params?: AsOfParam): Promise<{ site_ids: string[] }> {
-  return api.get<{ site_ids: string[] }>('/api/signal_rule_matches/active_breach_sites', params as QueryParams | undefined)
+  return api.get('/api/signal_rule_matches/active_breach_sites', params)
 }
 
 export interface ActiveSiteConfidence {
@@ -50,8 +49,5 @@ export interface ActiveSiteConfidence {
 }
 
 export function getActiveSiteConfidence(params?: AsOfParam): Promise<{ summaries: ActiveSiteConfidence[] }> {
-  return api.get<{ summaries: ActiveSiteConfidence[] }>(
-    '/api/signal_rule_matches/active_site_confidence',
-    params as QueryParams | undefined,
-  )
+  return api.get('/api/signal_rule_matches/active_site_confidence', params)
 }

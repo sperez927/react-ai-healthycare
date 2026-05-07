@@ -1,5 +1,4 @@
 import { api } from './client'
-import type { QueryParams } from './client'
 import type {
   Site, PaginatedResponse, PaginationParams, AsOfParam,
   SiteTimelineResponse, SiteTimelineParams,
@@ -9,11 +8,11 @@ import type {
 type SitesParams = PaginationParams & AsOfParam
 
 export function getSites(params?: SitesParams, options?: { signal?: AbortSignal }): Promise<PaginatedResponse<Site>> {
-  return api.get('/api/sites', params as QueryParams, options)
+  return api.get('/api/sites', params, options)
 }
 
 export function getSite(id: string, params?: AsOfParam): Promise<Site> {
-  return api.get(`/api/sites/${id}`, params as QueryParams)
+  return api.get(`/api/sites/${id}`, params)
 }
 
 export function unflagSite(id: string): Promise<Site> {
@@ -25,11 +24,11 @@ export function toggleSiteStatus(id: string): Promise<Site> {
 }
 
 export function getSiteTimeline(id: string, params?: SiteTimelineParams): Promise<SiteTimelineResponse> {
-  return api.get(`/api/sites/${id}/timeline`, params as QueryParams)
+  return api.get(`/api/sites/${id}/timeline`, params)
 }
 
 export function getSiteRiskHistory(id: string, params?: SiteRiskHistoryParams): Promise<SiteRiskHistoryResponse> {
-  return api.get(`/api/sites/${id}/risk_history`, params as QueryParams)
+  return api.get(`/api/sites/${id}/risk_history`, params)
 }
 
 export function updateSiteGeofence(id: string, geofence_radius_km: number): Promise<Site> {

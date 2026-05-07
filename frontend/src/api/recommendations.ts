@@ -76,27 +76,27 @@ export interface RecommendationParams {
 }
 
 export function getRecommendations(params?: RecommendationParams): Promise<RecommendationsResponse> {
-  return api.get<RecommendationsResponse>('/api/recommendations', params)
+  return api.get('/api/recommendations', params)
 }
 
 export function generateRecommendations(): Promise<{ created: number; invalid_count: number }> {
-  return api.post<{ created: number; invalid_count: number }>('/api/recommendations/generate', {})
+  return api.post('/api/recommendations/generate', {})
 }
 
 export function acceptRecommendation(id: string, reason?: string): Promise<Recommendation> {
-  return api.post<Recommendation>(`/api/recommendations/${id}/accept`, { reason })
+  return api.post(`/api/recommendations/${id}/accept`, { reason })
 }
 
 export function rejectRecommendation(id: string, reason?: string): Promise<Recommendation> {
-  return api.post<Recommendation>(`/api/recommendations/${id}/reject`, { reason })
+  return api.post(`/api/recommendations/${id}/reject`, { reason })
 }
 
 export function deferRecommendation(id: string, reason?: string): Promise<Recommendation> {
-  return api.post<Recommendation>(`/api/recommendations/${id}/defer`, { reason })
+  return api.post(`/api/recommendations/${id}/defer`, { reason })
 }
 
 export function executeRecommendation(id: string): Promise<Recommendation> {
-  return api.post<Recommendation>(`/api/recommendations/${id}/execute`, {})
+  return api.post(`/api/recommendations/${id}/execute`, {})
 }
 
 export function getRecommendationMetrics(): Promise<RecommendationMetrics> {

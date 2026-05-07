@@ -1,5 +1,4 @@
 import { api } from './client'
-import type { QueryParams } from './client'
 import type { Asset, AssetStatus, PaginatedResponse, PaginationParams, AsOfParam } from './types'
 
 type AssetsParams = PaginationParams & AsOfParam & {
@@ -9,11 +8,11 @@ type AssetsParams = PaginationParams & AsOfParam & {
 }
 
 export function getAssets(params?: AssetsParams, options?: { signal?: AbortSignal }): Promise<PaginatedResponse<Asset>> {
-  return api.get('/api/assets', params as QueryParams, options)
+  return api.get('/api/assets', params, options)
 }
 
 export function getAsset(id: string, params?: AsOfParam): Promise<Asset> {
-  return api.get(`/api/assets/${id}`, params as QueryParams)
+  return api.get(`/api/assets/${id}`, params)
 }
 
 export function updateAssetStatus(id: string, status: AssetStatus): Promise<Asset> {
