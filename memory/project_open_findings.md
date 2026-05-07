@@ -65,14 +65,14 @@ _(No open P1 items.)_
 ## P3 / Ongoing Hygiene
 
 - Frontend decomposition is substantially closed.
-  - [EntityCard.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/components/EntityCard.tsx)
+  - [EntityCard.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/components/EntityCard.tsx)
     closed at `830ceb3` (635 → 92-line public surface,
     sub-modules in `entity-card/`).
-  - [MapOverlayControls.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/components/map/MapOverlayControls.tsx)
+  - [MapOverlayControls.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/components/map/MapOverlayControls.tsx)
     closed at `5148b8f` (884 → 205-line orchestrator, 11
     sibling files in `overlay-controls/`); 35 direct unit
     tests landed first as the regression net at `fdcda0b`.
-  - [MapPage.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/pages/MapPage.tsx)
+  - [MapPage.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/pages/MapPage.tsx)
     was decomposed across six tranches from 905 lines to 351
     with behavior preserved and the page reduced to a wiring
     harness over named ownership seams.
@@ -82,9 +82,9 @@ _(No open P1 items.)_
 
 - GPU-dependent map Playwright proof remains intentionally local/manual,
   not CI-gated.
-  - [map-site-selection.spec.ts](/Users/timurmishiev/Desktop/Code/resilience/frontend/e2e/map-site-selection.spec.ts),
-    [live-map-streams.spec.ts](/Users/timurmishiev/Desktop/Code/resilience/frontend/e2e/live-map-streams.spec.ts),
-    and [replay-map.spec.ts](/Users/timurmishiev/Desktop/Code/resilience/frontend/e2e/replay-map.spec.ts)
+  - [map-site-selection.spec.ts](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/e2e/map-site-selection.spec.ts),
+    [live-map-streams.spec.ts](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/e2e/live-map-streams.spec.ts),
+    and [replay-map.spec.ts](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/e2e/replay-map.spec.ts)
     stay `test.skip(!!process.env.CI, ...)` because the current CI
     swiftshader path does not provide dependable MapLibre canvas proof.
   - Explicit decision at `ac626fb`: keep these as local-GPU/manual
@@ -113,7 +113,7 @@ _(No open P1 items.)_
   (`DEFAULT nextval('audit_events_sequence_seq')`). Callers that already
   apply their own order compose additively; the sequence clause acts only
   as a final tiebreaker. Direct regression spec at
-  [backend/spec/models/audit_event_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/models/audit_event_spec.rb)
+  [backend/spec/models/audit_event_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/models/audit_event_spec.rb)
   (`.up_to ... orders results by sequence so same-occurred_at events return in deterministic chain order`).
 - ~~No regression spec for chain-tip determinism under same-`Time.current` burst writes~~ —
   closed in this sweep (was OVL-2 from the joint 2026-05-01 audit).
@@ -137,9 +137,9 @@ _(No open P1 items.)_
   imports unchanged (only callsite is `MapPage.tsx`).
 - ~~Globe primitive-pickup E2E proof debt~~ — closed at `6d0f100`.
   All 3 previously-`fixme`d tests
-  ([globe-overlay-clickthrough.spec.ts:167](/Users/timurmishiev/Desktop/Code/resilience/frontend/e2e/globe-overlay-clickthrough.spec.ts),
-  [globe-site-anchor.spec.ts:248](/Users/timurmishiev/Desktop/Code/resilience/frontend/e2e/globe-site-anchor.spec.ts),
-  [globe-site-anchor.spec.ts:311](/Users/timurmishiev/Desktop/Code/resilience/frontend/e2e/globe-site-anchor.spec.ts))
+  ([globe-overlay-clickthrough.spec.ts:167](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/e2e/globe-overlay-clickthrough.spec.ts),
+  [globe-site-anchor.spec.ts:248](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/e2e/globe-site-anchor.spec.ts),
+  [globe-site-anchor.spec.ts:311](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/e2e/globe-site-anchor.spec.ts))
   pass interactively. Root cause was the `/api/sites` stub
   returning `{ data: sites }` without the `meta` field;
   `fetchAllPaginated` reads `meta.total_pages` and threw on

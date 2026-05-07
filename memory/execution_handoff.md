@@ -1908,19 +1908,19 @@ not currently scheduled):
 ## Validation Commands
 
 ```bash
-cd /Users/timurmishiev/Desktop/Code/resilience/backend && TEST_DATABASE_PORT=5434 /Users/timurmishiev/.rbenv/shims/bundle exec rspec spec/requests/api/sites_spec.rb spec/requests/api/ai_spec.rb spec/services/ai/ontology_query_service_spec.rb spec/services/ai/filter_service_spec.rb spec/services/ai/signal_filter_service_spec.rb
-cd /Users/timurmishiev/Desktop/Code/resilience/backend && TEST_DATABASE_PORT=5434 /Users/timurmishiev/.rbenv/shims/bundle exec rspec spec/jobs/correlations/evaluate_recent_job_spec.rb spec/config/recurring_spec.rb
-cd /Users/timurmishiev/Desktop/Code/resilience/backend && TEST_DATABASE_PORT=5434 /Users/timurmishiev/.rbenv/shims/bundle exec rspec spec/requests/api/signal_rule_matches_spec.rb
-cd /Users/timurmishiev/Desktop/Code/resilience/backend && TEST_DATABASE_PORT=5434 /Users/timurmishiev/.rbenv/shims/bundle exec rspec spec/services/telemetry/partition_manager_spec.rb
-cd /Users/timurmishiev/Desktop/Code/resilience/backend && TEST_DATABASE_PORT=5434 /Users/timurmishiev/.rbenv/shims/bundle exec rspec spec/services/feeds/gpsjam_ingestion_service_spec.rb
-cd /Users/timurmishiev/Desktop/Code/resilience/backend && TEST_DATABASE_PORT=5434 /Users/timurmishiev/.rbenv/shims/bundle exec rspec spec/services/replay/projection_service_spec.rb
-cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx vitest run src/test/useChokepoints.test.tsx src/test/MapPage.test.tsx src/test/GlobePage.test.tsx
-cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx vitest run src/test/MapPage.test.tsx src/test/GlobePage.test.tsx src/test/GraphPage.test.tsx src/test/fetchAllPaginated.test.ts src/test/mapGeodesy.test.ts src/test/mapBearingLine.test.ts src/test/mapRangeRings.test.ts src/test/mapSectorOverlay.test.ts
-cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx tsc -p tsconfig.app.json --noEmit
-cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx vitest run
-cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx eslint src/api/chokepoints.ts src/hooks/useChokepoints.ts src/pages/MapPage.tsx src/pages/GlobePage.tsx src/test/useChokepoints.test.tsx src/test/MapPage.test.tsx src/test/GlobePage.test.tsx
-cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx eslint src/api/client.ts src/api/sites.ts src/api/tasks.ts src/api/assets.ts src/api/areas_of_operation.ts src/components/globe/GlobeToolbar.tsx src/hooks/useAreasOfOperation.ts src/hooks/useAssets.ts src/hooks/useSites.ts src/hooks/useTasks.ts src/hooks/fetchAllPaginated.ts src/lib/mapBearingLine.ts src/lib/mapGeodesy.ts src/lib/mapRangeRings.ts src/lib/mapSectorOverlay.ts src/pages/GlobePage.tsx src/pages/GraphPage.tsx src/pages/MapPage.tsx src/test/GlobePage.test.tsx src/test/GraphPage.test.tsx src/test/MapPage.test.tsx src/test/fetchAllPaginated.test.ts src/test/mapGeodesy.test.ts
-git -C /Users/timurmishiev/Desktop/Code/resilience diff --check
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/backend && TEST_DATABASE_PORT=5434 /Users/sperez927/.rbenv/shims/bundle exec rspec spec/requests/api/sites_spec.rb spec/requests/api/ai_spec.rb spec/services/ai/ontology_query_service_spec.rb spec/services/ai/filter_service_spec.rb spec/services/ai/signal_filter_service_spec.rb
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/backend && TEST_DATABASE_PORT=5434 /Users/sperez927/.rbenv/shims/bundle exec rspec spec/jobs/correlations/evaluate_recent_job_spec.rb spec/config/recurring_spec.rb
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/backend && TEST_DATABASE_PORT=5434 /Users/sperez927/.rbenv/shims/bundle exec rspec spec/requests/api/signal_rule_matches_spec.rb
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/backend && TEST_DATABASE_PORT=5434 /Users/sperez927/.rbenv/shims/bundle exec rspec spec/services/telemetry/partition_manager_spec.rb
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/backend && TEST_DATABASE_PORT=5434 /Users/sperez927/.rbenv/shims/bundle exec rspec spec/services/feeds/gpsjam_ingestion_service_spec.rb
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/backend && TEST_DATABASE_PORT=5434 /Users/sperez927/.rbenv/shims/bundle exec rspec spec/services/replay/projection_service_spec.rb
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx vitest run src/test/useChokepoints.test.tsx src/test/MapPage.test.tsx src/test/GlobePage.test.tsx
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx vitest run src/test/MapPage.test.tsx src/test/GlobePage.test.tsx src/test/GraphPage.test.tsx src/test/fetchAllPaginated.test.ts src/test/mapGeodesy.test.ts src/test/mapBearingLine.test.ts src/test/mapRangeRings.test.ts src/test/mapSectorOverlay.test.ts
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx tsc -p tsconfig.app.json --noEmit
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx vitest run
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx eslint src/api/chokepoints.ts src/hooks/useChokepoints.ts src/pages/MapPage.tsx src/pages/GlobePage.tsx src/test/useChokepoints.test.tsx src/test/MapPage.test.tsx src/test/GlobePage.test.tsx
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx eslint src/api/client.ts src/api/sites.ts src/api/tasks.ts src/api/assets.ts src/api/areas_of_operation.ts src/components/globe/GlobeToolbar.tsx src/hooks/useAreasOfOperation.ts src/hooks/useAssets.ts src/hooks/useSites.ts src/hooks/useTasks.ts src/hooks/fetchAllPaginated.ts src/lib/mapBearingLine.ts src/lib/mapGeodesy.ts src/lib/mapRangeRings.ts src/lib/mapSectorOverlay.ts src/pages/GlobePage.tsx src/pages/GraphPage.tsx src/pages/MapPage.tsx src/test/GlobePage.test.tsx src/test/GraphPage.test.tsx src/test/MapPage.test.tsx src/test/fetchAllPaginated.test.ts src/test/mapGeodesy.test.ts
+git -C /Users/administrative/Desktop/Code/react-ai-healthycare diff --check
 ```
 
 ## Last Validation Results (Tranche 2A — events SSE producer-side org filter, **uncommitted**, 2026-04-25)
@@ -2143,7 +2143,7 @@ git -C /Users/timurmishiev/Desktop/Code/resilience diff --check
 ## Prior Validation — Band A + Band B (shipped in `27831e1`, 2026-04-22)
 
 - Combined backend validation across full remediation tranche:
-  - `TEST_DATABASE_PORT=5434 /Users/timurmishiev/.rbenv/shims/bundle exec rspec spec/jobs/correlations/evaluate_recent_job_spec.rb spec/config/recurring_spec.rb spec/requests/api/signal_rule_matches_spec.rb spec/requests/api/vessels_spec.rb spec/services/telemetry/partition_manager_spec.rb spec/services/feeds/gpsjam_ingestion_service_spec.rb spec/services/replay/projection_service_spec.rb` → **85 examples, 0 failures**
+  - `TEST_DATABASE_PORT=5434 /Users/sperez927/.rbenv/shims/bundle exec rspec spec/jobs/correlations/evaluate_recent_job_spec.rb spec/config/recurring_spec.rb spec/requests/api/signal_rule_matches_spec.rb spec/requests/api/vessels_spec.rb spec/services/telemetry/partition_manager_spec.rb spec/services/feeds/gpsjam_ingestion_service_spec.rb spec/services/replay/projection_service_spec.rb` → **85 examples, 0 failures**
   - note: PostgreSQL emitted local non-failing `unknown OID ... location` / `unknown OID ... pg_advisory_lock` noise
 - Focused frontend validation:
   - `npx vitest run src/test/useChokepoints.test.tsx src/test/MapPage.test.tsx src/test/GlobePage.test.tsx` → **54 / 54 pass**
@@ -2178,7 +2178,7 @@ git -C /Users/timurmishiev/Desktop/Code/resilience diff --check
 ## Prior Validation — Phase 7 Slice 7-1E-followup (shipped in `51f8a3f`, 2026-04-22)
 
 - Focused backend validation:
-  - `TEST_DATABASE_PORT=5434 /Users/timurmishiev/.rbenv/shims/bundle exec rspec spec/requests/api/sites_spec.rb spec/requests/api/ai_spec.rb spec/services/ai/ontology_query_service_spec.rb spec/services/ai/filter_service_spec.rb spec/services/ai/signal_filter_service_spec.rb` → **89 examples, 0 failures**
+  - `TEST_DATABASE_PORT=5434 /Users/sperez927/.rbenv/shims/bundle exec rspec spec/requests/api/sites_spec.rb spec/requests/api/ai_spec.rb spec/services/ai/ontology_query_service_spec.rb spec/services/ai/filter_service_spec.rb spec/services/ai/signal_filter_service_spec.rb` → **89 examples, 0 failures**
 - Focused frontend validation:
   - `npx vitest run src/test/MapPage.test.tsx src/test/GlobePage.test.tsx src/test/GraphPage.test.tsx src/test/fetchAllPaginated.test.ts src/test/mapGeodesy.test.ts src/test/mapBearingLine.test.ts src/test/mapRangeRings.test.ts src/test/mapSectorOverlay.test.ts` → **75 / 75 pass across 8 files**
 - Full frontend validation:
@@ -2313,7 +2313,7 @@ git -C /Users/timurmishiev/Desktop/Code/resilience diff --check
 - **CI `frontend-perf` job now runs two benchmarks (globe + map) against the same Docker app.** First run is likely to expose CI-runner variance in both jsMs and paintMs. If jsMs gate is too tight on GitHub-hosted runners, raise the spec floors (NOT the multiplier) and re-anchor per real CI numbers, or use the env overrides (`MAP_BENCH_MAX_JS_*`). Don't skip the spec on CI pre-emptively — confirm by running.
 - **paintMs is reported but not asserted.** Under swiftshader it ranges 100–1444ms across 50 local samples; any operator-felt-time regression detection needs a real-GPU run (local dev, staging, or a future CI runner with GPU pass-through). paintMs numbers in `frontend-perf-report` artifact are for observability only.
 - Backend local validation still needs the repo Ruby path:
-  - `TEST_DATABASE_PORT=5434 /Users/timurmishiev/.rbenv/shims/bundle exec ...`
+  - `TEST_DATABASE_PORT=5434 /Users/sperez927/.rbenv/shims/bundle exec ...`
   - the system `bundle` path still fails on the known Bundler `2.7.2` mismatch
 - Full backend suite is not globally green in this local env:
   - untouched `spec/requests/api/telemetry_spec.rb` and `spec/services/telemetry/simulator_service_spec.rb` currently fail with `PG::CheckViolation` because the test DB's `telemetry_readings` partitions do not cover `2026-04-22`

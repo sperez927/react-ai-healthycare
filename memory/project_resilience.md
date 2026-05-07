@@ -423,7 +423,7 @@ Current active sequencing lives in:
   and the standard production replay smokes (`replay-map.spec.ts`,
   `replay-globe.spec.ts`) pass after the live viewer-account repair and
   the copy-alignment follow-up in `563ce5c`.
-- Frontend architecture debt is now concentrated in [MapPage.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/pages/MapPage.tsx) only. [MapOverlayControls.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/components/map/MapOverlayControls.tsx) closed at `5148b8f` after a tests-first net at `fdcda0b`, and [EntityCard.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/components/EntityCard.tsx) closed at `830ceb3`. The remaining MapPage monolith is not a blocker to the current deployment, but it is still real debt.
+- Frontend architecture debt is now concentrated in [MapPage.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/pages/MapPage.tsx) only. [MapOverlayControls.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/components/map/MapOverlayControls.tsx) closed at `5148b8f` after a tests-first net at `fdcda0b`, and [EntityCard.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/components/EntityCard.tsx) closed at `830ceb3`. The remaining MapPage monolith is not a blocker to the current deployment, but it is still real debt.
 - The remaining architectural ceiling is still thread-per-connection SSE itself; replacing that transport is a future scale project, not an agreed near-term blocker.
 
 ---

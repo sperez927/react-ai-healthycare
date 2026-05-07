@@ -256,9 +256,9 @@ Run real validation where possible.
 
 ### Always run
 ```
-cd /Users/timurmishiev/Desktop/Code/resilience/backend && bundle exec rspec --format progress 2>&1 | tail -5
-cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx tsc --noEmit 2>&1 | tail -5
-cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx vitest run --reporter=dot 2>&1 | tail -8
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/backend && bundle exec rspec --format progress 2>&1 | tail -5
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx tsc --noEmit 2>&1 | tail -5
+cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx vitest run --reporter=dot 2>&1 | tail -8
 ```
 
 ### Also run targeted checks when applicable

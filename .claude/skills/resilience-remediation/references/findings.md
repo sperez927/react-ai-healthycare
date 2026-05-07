@@ -20,16 +20,16 @@ executable backlog unless re-opened by new evidence.
 - Severity: `P1`
 - Status: fixed and shipped in `27831e1` on `2026-04-22`
 - Why real:
-  - [evaluate_recent_job.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/jobs/correlations/evaluate_recent_job.rb) uses `WINDOW_SECONDS = 12`
-  - [recurring.yml](/Users/timurmishiev/Desktop/Code/resilience/backend/config/recurring.yml) schedules the job every `30 seconds`
+  - [evaluate_recent_job.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/jobs/correlations/evaluate_recent_job.rb) uses `WINDOW_SECONDS = 12`
+  - [recurring.yml](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/config/recurring.yml) schedules the job every `30 seconds`
   - comments still say `every 10 seconds`
 - Risk:
   - signals ingested 12–30 seconds before a run are never evaluated for correlations or geofence breaches
 - Primary files:
-  - [evaluate_recent_job.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/jobs/correlations/evaluate_recent_job.rb)
-  - [recurring.yml](/Users/timurmishiev/Desktop/Code/resilience/backend/config/recurring.yml)
-  - [correlation_evaluator.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/config/initializers/correlation_evaluator.rb)
-  - [evaluate_recent_job_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/jobs/correlations/evaluate_recent_job_spec.rb)
+  - [evaluate_recent_job.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/jobs/correlations/evaluate_recent_job.rb)
+  - [recurring.yml](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/config/recurring.yml)
+  - [correlation_evaluator.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/config/initializers/correlation_evaluator.rb)
+  - [evaluate_recent_job_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/jobs/correlations/evaluate_recent_job_spec.rb)
 - Validation minimum:
   - focused job spec proving a signal inside the old dead zone is now evaluated
 
@@ -37,16 +37,16 @@ executable backlog unless re-opened by new evidence.
 - Severity: `P2`
 - Status: fixed and shipped in `27831e1` on `2026-04-22`
 - Why real:
-  - [MapPage.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/pages/MapPage.tsx) and [GlobePage.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/pages/GlobePage.tsx) fetch chokepoints with `per_page: 200`
-  - [useChokepoints.ts](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/hooks/useChokepoints.ts) only fetches one page
-  - [base_controller.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/controllers/api/base_controller.rb) caps pagination at `200`
+  - [MapPage.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/pages/MapPage.tsx) and [GlobePage.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/pages/GlobePage.tsx) fetch chokepoints with `per_page: 200`
+  - [useChokepoints.ts](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/hooks/useChokepoints.ts) only fetches one page
+  - [base_controller.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/controllers/api/base_controller.rb) caps pagination at `200`
 - Risk:
   - spatial operator surfaces silently omit chokepoints beyond the first page
 - Primary files:
-  - [MapPage.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/pages/MapPage.tsx)
-  - [GlobePage.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/pages/GlobePage.tsx)
-  - [useChokepoints.ts](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/hooks/useChokepoints.ts)
-  - [chokepoints_controller.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/controllers/api/chokepoints_controller.rb)
+  - [MapPage.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/pages/MapPage.tsx)
+  - [GlobePage.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/pages/GlobePage.tsx)
+  - [useChokepoints.ts](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/hooks/useChokepoints.ts)
+  - [chokepoints_controller.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/controllers/api/chokepoints_controller.rb)
 - Validation minimum:
   - direct proof that `>200` chokepoints remain visible on both main spatial surfaces or their shared data path
 
@@ -54,8 +54,8 @@ executable backlog unless re-opened by new evidence.
 - Severity: `P2`
 - Status: fixed and shipped in `27831e1` on `2026-04-22`
 - Why real:
-  - [signal_rule_matches_controller.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/controllers/api/signal_rule_matches_controller.rb) and [vessels_controller.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/controllers/api/vessels_controller.rb) `#tracks` both used `safe_parse_datetime`
-  - [base_controller.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/controllers/api/base_controller.rb) returns `nil` on invalid parse
+  - [signal_rule_matches_controller.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/controllers/api/signal_rule_matches_controller.rb) and [vessels_controller.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/controllers/api/vessels_controller.rb) `#tracks` both used `safe_parse_datetime`
+  - [base_controller.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/controllers/api/base_controller.rb) returns `nil` on invalid parse
   - invalid `from` produced `WHERE occurred_at >= NULL`; invalid `to` was silently ignored
 - Scope audited (other `safe_parse_datetime` callers confirmed safe):
   - `SignalsController` — explicit `.nil?` rejections already present (lines 16/19/55)
@@ -65,11 +65,11 @@ executable backlog unless re-opened by new evidence.
 - Risk:
   - malformed filters returned `200 OK` with incorrect results instead of `400`
 - Primary files:
-  - [signal_rule_matches_controller.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/controllers/api/signal_rule_matches_controller.rb)
-  - [vessels_controller.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/controllers/api/vessels_controller.rb)
-  - [base_controller.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/controllers/api/base_controller.rb)
-  - [signal_rule_matches_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/requests/api/signal_rule_matches_spec.rb)
-  - [vessels_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/requests/api/vessels_spec.rb)
+  - [signal_rule_matches_controller.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/controllers/api/signal_rule_matches_controller.rb)
+  - [vessels_controller.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/controllers/api/vessels_controller.rb)
+  - [base_controller.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/controllers/api/base_controller.rb)
+  - [signal_rule_matches_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/requests/api/signal_rule_matches_spec.rb)
+  - [vessels_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/requests/api/vessels_spec.rb)
 - Validation minimum:
   - request-spec coverage for malformed `from` and `to` on both controllers
 
@@ -77,13 +77,13 @@ executable backlog unless re-opened by new evidence.
 - Severity: `P2`
 - Status: fixed and shipped in `27831e1` on `2026-04-22`
 - Why real:
-  - [partition_manager.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/services/telemetry/partition_manager.rb) short-circuits on cached partition name
+  - [partition_manager.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/services/telemetry/partition_manager.rb) short-circuits on cached partition name
   - targeted spec currently fails with `no partition of relation "telemetry_readings" found for row`
 - Risk:
   - stale cache can suppress real partition creation after rollback
 - Primary files:
-  - [partition_manager.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/services/telemetry/partition_manager.rb)
-  - [partition_manager_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/services/telemetry/partition_manager_spec.rb)
+  - [partition_manager.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/services/telemetry/partition_manager.rb)
+  - [partition_manager_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/services/telemetry/partition_manager_spec.rb)
 - Validation minimum:
   - partition-manager spec green
 
@@ -93,15 +93,15 @@ executable backlog unless re-opened by new evidence.
 - Severity: `P2`
 - Status: fixed and shipped in `27831e1` on `2026-04-22`
 - Why real:
-  - [gpsjam_ingestion_service.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/services/feeds/gpsjam_ingestion_service.rb) knows the source date lags 1–2 days
+  - [gpsjam_ingestion_service.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/services/feeds/gpsjam_ingestion_service.rb) knows the source date lags 1–2 days
   - ingestion still writes `occurred_at: Time.current.utc`
 - Risk:
   - replay is historically wrong
   - dedup semantics weaken
   - repeated daily data can look like fresh events every poll
 - Primary files:
-  - [gpsjam_ingestion_service.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/services/feeds/gpsjam_ingestion_service.rb)
-  - [ingest_service.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/services/signals/ingest_service.rb)
+  - [gpsjam_ingestion_service.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/services/feeds/gpsjam_ingestion_service.rb)
+  - [ingest_service.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/services/signals/ingest_service.rb)
   - relevant feed specs
 - Validation minimum:
   - spec proving source date becomes stored `occurred_at`
@@ -110,12 +110,12 @@ executable backlog unless re-opened by new evidence.
 - Severity: `P2` latent / scale-triggered
 - Status: fixed and shipped in `27831e1` on `2026-04-22`
 - Why real:
-  - [projection_service.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/services/replay/projection_service.rb) does chronological `.limit(MAX_EVENTS)` before folding latest per entity
+  - [projection_service.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/services/replay/projection_service.rb) does chronological `.limit(MAX_EVENTS)` before folding latest per entity
 - Risk:
   - high-churn entities can reconstruct to a stale historical snapshot with no warning
 - Primary files:
-  - [projection_service.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/services/replay/projection_service.rb)
-  - [projection_service_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/services/replay/projection_service_spec.rb)
+  - [projection_service.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/services/replay/projection_service.rb)
+  - [projection_service_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/services/replay/projection_service_spec.rb)
 - Validation minimum:
   - spec proving latest-per-entity semantics under large event counts
 
@@ -175,8 +175,8 @@ executable backlog unless re-opened by new evidence.
   - render the captured context as an anchored header on the result Card so operators see exactly which briefing they are viewing
   - `handleExport` now sources `summary_type` and `site_name` from the captured context, never from current selector state
 - Primary files:
-  - [BriefingPanel.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/components/BriefingPanel.tsx)
-  - [BriefingPanel.test.tsx](/Users/timurmishiev/Desktop/Code/resilience/frontend/src/test/BriefingPanel.test.tsx)
+  - [BriefingPanel.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/components/BriefingPanel.tsx)
+  - [BriefingPanel.test.tsx](/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/src/test/BriefingPanel.test.tsx)
 - Validation minimum:
   - focused Vitest proving the captured header + captured-export params (3 new cases)
 
@@ -184,9 +184,9 @@ executable backlog unless re-opened by new evidence.
 - Severity: `P3`
 - Status: fixed and shipped in `e7eaccb` on `2026-04-22`
 - Why real:
-  - [metrics/recorder.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/services/metrics/recorder.rb) declared `LATENCY_WINDOW = 5.minutes` and published it as `window_seconds` (line 81)
+  - [metrics/recorder.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/services/metrics/recorder.rb) declared `LATENCY_WINDOW = 5.minutes` and published it as `window_seconds` (line 81)
   - `persist_request_latency!` calls `@request_samples.clear` on every invocation (line 60), so the effective window equals the snapshot cadence
-  - [recurring.yml](/Users/timurmishiev/Desktop/Code/resilience/backend/config/recurring.yml) schedules `metrics_snapshot` `every minute` — so samples are cleared every 60s, not every 300s
+  - [recurring.yml](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/config/recurring.yml) schedules `metrics_snapshot` `every minute` — so samples are cleared every 60s, not every 300s
   - docstring and comment both claimed a `rolling 5-min window`
 - Risk:
   - operators / downstream consumers reading `window_seconds: 300` are misled about the aggregation window
@@ -196,9 +196,9 @@ executable backlog unless re-opened by new evidence.
   - rewrote the header comment to state that the window tracks the snapshot cadence by design (samples are cleared on each snapshot)
   - behavior unchanged — this is a labeling/correctness fix, not a windowing-semantics change
 - Primary files:
-  - [metrics/recorder.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/services/metrics/recorder.rb)
-  - [recurring.yml](/Users/timurmishiev/Desktop/Code/resilience/backend/config/recurring.yml)
-  - [recorder_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/services/metrics/recorder_spec.rb)
+  - [metrics/recorder.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/services/metrics/recorder.rb)
+  - [recurring.yml](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/config/recurring.yml)
+  - [recorder_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/services/metrics/recorder_spec.rb)
 - Validation minimum:
   - focused recorder spec proving `payload["window_seconds"] == 60` after `snapshot!`
 
@@ -206,8 +206,8 @@ executable backlog unless re-opened by new evidence.
 - Severity: `P3`
 - Status: fixed and shipped in `8ecc2c0` on `2026-04-22`
 - Why real:
-  - [revoked_jwt.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/models/revoked_jwt.rb) has `.active` scope (`expires_at > Time.current`) but retained every row forever
-  - no pruning job existed in [backend/app/jobs](/Users/timurmishiev/Desktop/Code/resilience/backend/app/jobs); the table grew unboundedly as tokens churned
+  - [revoked_jwt.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/models/revoked_jwt.rb) has `.active` scope (`expires_at > Time.current`) but retained every row forever
+  - no pruning job existed in [backend/app/jobs](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/jobs); the table grew unboundedly as tokens churned
 - Note:
   - indexed lookup exists (`index_revoked_jwts_on_jti`, `index_revoked_jwts_on_expires_at`), so this was not an acute auth-path failure — pure maintenance debt
 - Fix direction (applied):
@@ -215,9 +215,9 @@ executable backlog unless re-opened by new evidence.
   - scheduled daily (`every day at 2:30am`) in `config/recurring.yml` — JWT TTL is 24h (`JwtAuthenticatable::TTL`), so a daily cadence reliably drains the table without contention with other nightly jobs
   - job-level spec proves boundary alignment with `.active` so future refactors cannot desync the inactive ⇄ prunable contract
 - Primary files:
-  - [auth/prune_revoked_jwts_job.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/jobs/auth/prune_revoked_jwts_job.rb)
-  - [recurring.yml](/Users/timurmishiev/Desktop/Code/resilience/backend/config/recurring.yml)
-  - [prune_revoked_jwts_job_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/jobs/auth/prune_revoked_jwts_job_spec.rb)
+  - [auth/prune_revoked_jwts_job.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/jobs/auth/prune_revoked_jwts_job.rb)
+  - [recurring.yml](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/config/recurring.yml)
+  - [prune_revoked_jwts_job_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/jobs/auth/prune_revoked_jwts_job_spec.rb)
 - Validation minimum:
   - focused job spec proving expired rows delete, live rows survive, and boundary (`expires_at == Time.current`) rows are pruned
 
@@ -228,14 +228,14 @@ executable backlog unless re-opened by new evidence.
   - production-scale migrations on a live PostgreSQL deployment can hold long locks, backfill NOT NULL columns on large tables, or add non-concurrent indexes — each a known path to production stalls
   - the repo had no write-time guardrail catching these patterns before deploy
 - Fix direction (applied):
-  - added `strong_migrations` (2.6.0) to the default group in [Gemfile](/Users/timurmishiev/Desktop/Code/resilience/backend/Gemfile)
-  - created [config/initializers/strong_migrations.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/config/initializers/strong_migrations.rb) with `start_after = 20260415100001` — the timestamp of the latest existing migration — so historical migrations are never retroactively flagged
+  - added `strong_migrations` (2.6.0) to the default group in [Gemfile](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/Gemfile)
+  - created [config/initializers/strong_migrations.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/config/initializers/strong_migrations.rb) with `start_after = 20260415100001` — the timestamp of the latest existing migration — so historical migrations are never retroactively flagged
   - any migration added after the baseline is validated at write time; runs in the test env during every `db:prepare`, so CI (which runs the full RSpec suite) exercises the guardrail automatically
-  - added [spec/config/strong_migrations_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/config/strong_migrations_spec.rb) with a drift guard that fails if `start_after` is ever bumped past an existing migration (prevents silencing warnings on real new migrations)
+  - added [spec/config/strong_migrations_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/config/strong_migrations_spec.rb) with a drift guard that fails if `start_after` is ever bumped past an existing migration (prevents silencing warnings on real new migrations)
 - Primary files:
-  - [Gemfile](/Users/timurmishiev/Desktop/Code/resilience/backend/Gemfile)
-  - [config/initializers/strong_migrations.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/config/initializers/strong_migrations.rb)
-  - [spec/config/strong_migrations_spec.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/spec/config/strong_migrations_spec.rb)
+  - [Gemfile](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/Gemfile)
+  - [config/initializers/strong_migrations.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/config/initializers/strong_migrations.rb)
+  - [spec/config/strong_migrations_spec.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/spec/config/strong_migrations_spec.rb)
 - Validation minimum:
   - focused spec proving the gem loads and the baseline cannot silently outrun existing migrations
 - Note:
@@ -245,7 +245,7 @@ executable backlog unless re-opened by new evidence.
 ## Rejected / Unconfirmed / Strategic Only
 
 - `SignalsController` external-signal baseline scoping:
-  - intentionally global under [external_signal_policy.rb](/Users/timurmishiev/Desktop/Code/resilience/backend/app/policies/external_signal_policy.rb)
+  - intentionally global under [external_signal_policy.rb](/Users/administrative/Desktop/Code/react-ai-healthycare/backend/app/policies/external_signal_policy.rb)
 - `DebriefPanel` ordering flake:
   - unconfirmed; isolated file passes
 - AI cache removal:

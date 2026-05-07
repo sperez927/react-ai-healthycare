@@ -110,7 +110,7 @@ Use the route matrix in:
 For broad manual testing, prefer the local Docker app described in the repo:
 
 ```bash
-cd /Users/timurmishiev/Desktop/Code/resilience
+cd /Users/administrative/Desktop/Code/react-ai-healthycare
 docker compose up
 ```
 
@@ -130,7 +130,7 @@ If an admin surface must be tested, either:
 ### Playwright-assisted verification
 
 Resilience already has a real E2E harness under:
-- `/Users/timurmishiev/Desktop/Code/resilience/frontend/e2e`
+- `/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/e2e`
 
 Prefer that harness over inventing ad-hoc browser automation.
 
@@ -141,9 +141,9 @@ Important repo facts:
 - helpers already implement login, role login, failed-request capture, and E2E bridge wiring
 
 Key files:
-- `/Users/timurmishiev/Desktop/Code/resilience/frontend/playwright.config.ts`
-- `/Users/timurmishiev/Desktop/Code/resilience/frontend/e2e/global.setup.ts`
-- `/Users/timurmishiev/Desktop/Code/resilience/frontend/e2e/helpers.ts`
+- `/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/playwright.config.ts`
+- `/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/e2e/global.setup.ts`
+- `/Users/administrative/Desktop/Code/react-ai-healthycare/frontend/e2e/helpers.ts`
 
 If you need a browser-driven regression pass:
 - use the existing Playwright suite first

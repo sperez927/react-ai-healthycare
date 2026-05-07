@@ -64,15 +64,15 @@ Treat those legacy docs as secondary context only. If they conflict with the exe
 
 ### What has changed?
 ```
-Bash: cd /Users/timurmishiev/Desktop/Code/resilience && git status
-Bash: cd /Users/timurmishiev/Desktop/Code/resilience && git diff --stat
-Bash: cd /Users/timurmishiev/Desktop/Code/resilience && git diff --name-only
-Bash: cd /Users/timurmishiev/Desktop/Code/resilience && git diff HEAD --name-only
+Bash: cd /Users/administrative/Desktop/Code/react-ai-healthycare && git status
+Bash: cd /Users/administrative/Desktop/Code/react-ai-healthycare && git diff --stat
+Bash: cd /Users/administrative/Desktop/Code/react-ai-healthycare && git diff --name-only
+Bash: cd /Users/administrative/Desktop/Code/react-ai-healthycare && git diff HEAD --name-only
 ```
 
 ### What does the diff actually contain?
 ```
-Bash: cd /Users/timurmishiev/Desktop/Code/resilience && git diff HEAD
+Bash: cd /Users/administrative/Desktop/Code/react-ai-healthycare && git diff HEAD
 ```
 
 If the diff is very large, read it file-by-file instead of as one blob.
@@ -82,9 +82,9 @@ First, run the slice-specific validation commands listed in `memory/execution_ha
 
 Then always run these baseline checks:
 ```
-Bash: cd /Users/timurmishiev/Desktop/Code/resilience/backend && bundle exec rspec --format progress 2>&1 | tail -5
-Bash: cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx tsc -b 2>&1 | tail -5
-Bash: cd /Users/timurmishiev/Desktop/Code/resilience/frontend && npx vitest run --reporter=dot 2>&1 | tail -8
+Bash: cd /Users/administrative/Desktop/Code/react-ai-healthycare/backend && bundle exec rspec --format progress 2>&1 | tail -5
+Bash: cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx tsc -b 2>&1 | tail -5
+Bash: cd /Users/administrative/Desktop/Code/react-ai-healthycare/frontend && npx vitest run --reporter=dot 2>&1 | tail -8
 ```
 
 Use `tsc -b` (project-references build), not `tsc --noEmit`. The root
