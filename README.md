@@ -472,3 +472,6 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting.
 
 ## Description
 A small repository for practicing collaborative Git workflows.
+
+## Development Notes
+Contributions should be submitted through pull requests.
