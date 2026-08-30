@@ -469,3 +469,6 @@ See [SECURITY.md](SECURITY.md) for vulnerability reporting.
 ## License
 
 [MIT](LICENSE)
+
+## Description
+A small repository for practicing collaborative Git workflows.
